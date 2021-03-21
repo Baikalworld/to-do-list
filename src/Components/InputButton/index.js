@@ -1,3 +1,3 @@
-import React from "./InputButton";
+import InputButton from "./InputButton";
 
 export default InputButton;
