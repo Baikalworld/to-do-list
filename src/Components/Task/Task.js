@@ -1,12 +1,17 @@
 import React from "react";
 
-function Task() {
+// for changing task
+// Just for one task
+// task is Map Object
+function Task({task}) {
+
+  console.log(task);
   return (
     <li>
-      Buy Chocolaty
-      <button>done</button>
-      <button>delte</button>
-      <button>edit</button>
+      {task.text}
+      <button>Done</button>
+      <button>Delete</button>
+      <button>Edit</button>
     </li>
   );
 }

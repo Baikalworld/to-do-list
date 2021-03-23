@@ -1,12 +1,17 @@
 import React from "react";
-import Task from "../Task/Task";
+import Task from "../Task";
 
-function TaskList() {
+//
+function TaskList({tasks}) {
+
+  
   return (
-      <>
+    <>
       <h2>Daily Stuff</h2>
       <ul className="TaskList">
-        <Task />
+        {tasks.map((task, index) => 
+          <Task task={task} key={index} />
+        )}
       </ul>
     </>
   );
