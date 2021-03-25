@@ -21,6 +21,9 @@ function App() {
       status: "in progress",
     },
   ]);
+  // we create two useState objects (hooks) with that we can send the new data to the other component
+  const [textForEdition, setTextForEdition] = useState();
+  const [idForEdition, setIdForEdition] = useState();
 
   const addNewTask = (text, id) => {
     const tasksAux = [
@@ -33,7 +36,6 @@ function App() {
     ];
 
     setTasks(tasksAux);
-    // bla bla bla
   };
 
   const deleteTask = (id) => {
@@ -49,11 +51,47 @@ function App() {
     //const tasksAux;
   };
 
+  const editTask = (id, text) => {
+    const tasksAux = tasks.map((task) => {
+      if (task.id === id) {
+        return {
+          id: id,
+          text: text,
+          status: "in progress",
+        };
+      } else {
+        return {
+          id: task.id,
+          text: task.text,
+          status: task.status,
+        };
+      }
+    });
+    setTasks(tasksAux);
+    setIdForEdition(undefined);
+  };
+
+  const editTaskCall = (id, text) => {
+    setTextForEdition(text);
+    setIdForEdition(id);
+  };
+
   return (
     <div className="App">
       <h1>To Do List Group 2 </h1>
-      <InputButton tasks={tasks} addNewTask={addNewTask} />
-      <TaskList tasks={tasks} deleteTask={deleteTask} doneTask={doneTask} />
+      <InputButton
+        tasks={tasks}
+        addNewTask={addNewTask}
+        editTask={editTask}
+        textForEdition={textForEdition}
+        idForEdition={idForEdition}
+      />
+      <TaskList
+        tasks={tasks}
+        deleteTask={deleteTask}
+        doneTask={doneTask}
+        editTaskCall={editTaskCall}
+      />
     </div>
   );
 }

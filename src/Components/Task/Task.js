@@ -4,7 +4,7 @@ import "./Task.css";
 // for changing task
 // Just for one task
 // task is Map Object
-function Task({ task, deleteTask, doneTask }) {
+function Task({ task, deleteTask, doneTask, editTaskCall }) {
   const onDelete = () => {
     deleteTask(task.id);
   };
@@ -12,6 +12,11 @@ function Task({ task, deleteTask, doneTask }) {
   const onDone = () => {
     doneTask(task.id);
   };
+  
+  const onEdit = () => {
+    editTaskCall(task.id, task.text);
+  };
+
   return (
     // comparation ? whenTrue : whenFalse;
     // task.status === 'done' ? 'task-done' : ''
@@ -22,7 +27,7 @@ function Task({ task, deleteTask, doneTask }) {
       </span>
       <button onClick={onDone}>Done</button>
       <button onClick={onDelete}>Delete</button>
-      <button>Edit</button>
+      <button onClick={onEdit}>Edit</button>
     </li>
   );
 }

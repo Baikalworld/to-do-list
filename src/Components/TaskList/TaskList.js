@@ -2,7 +2,7 @@ import React from "react";
 import Task from "../Task";
 import "./TaskList.css";
 //
-function TaskList({ tasks, deleteTask, doneTask }) {
+function TaskList({ tasks, deleteTask, doneTask, editTaskCall }) {
   return (
     <>
       <h2>Daily Stuff</h2>
@@ -13,6 +13,7 @@ function TaskList({ tasks, deleteTask, doneTask }) {
             key={index}
             deleteTask={deleteTask}
             doneTask={doneTask}
+            editTaskCall={editTaskCall}
           />
         ))}
       </ul>
